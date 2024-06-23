@@ -2,22 +2,24 @@ package main
 
 import "fmt"
 
-func main() {
-	nums1 := [6]int{1, 2, 3, 0, 0, 0}
-	nums2 := [3]int{2, 4, 5}
-	n, m := 3, 3
+func intersection(nums1 []int, nums2 []int) []int {
+	myMap := map[int]struct{}{}
 
-	for n != 0 {
-		if m != 0 && nums1[m-1] >= nums2[n-1] {
-			nums1[m+n-1] = nums1[m-1]
-			m--
-		} else {
-			nums1[m+n-1] = nums2[n-1]
-			n--
+	for _, n := range nums1 {
+		myMap[n] = struct{}{}
+	}
+
+	var res []int
+	for _, num := range nums2 {
+		if _, ok := myMap[num]; ok {
+			res = append(res, num)
 		}
 	}
+	return res
+}
 
-	for x := range nums1 {
-		fmt.Println(x)
-	}
+func main() {
+	n1 := []int{1, 2, 3}
+	n2 := []int{2, 3, 4}
+	fmt.Println(intersection(n1, n2))
 }
