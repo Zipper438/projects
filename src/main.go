@@ -13,6 +13,7 @@ func intersection(nums1 []int, nums2 []int) []int {
 	for _, num := range nums2 {
 		if _, ok := myMap[num]; ok {
 			res = append(res, num)
+			delete(myMap, num)
 		}
 	}
 	return res
