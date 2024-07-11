@@ -19,6 +19,5 @@ func countingSort(arr []int32) []int32 {
 			count[i]--
 		}
 	}
-	j++
 	return arr
 }
